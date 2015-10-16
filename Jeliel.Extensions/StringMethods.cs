@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Text;
 
 namespace Jeliel.Extensions
 {
@@ -82,6 +84,24 @@ namespace Jeliel.Extensions
             return sb.ToString();
         }
 
-      
+
+        /// <summary>
+        /// Join a StringBuilder with a separator
+        /// </summary>
+        /// <param name="stringBuilder">StringBuilder</param>
+        /// <param name="separator">Separator</param>
+        /// <returns>string</returns>
+        public static string Join(this StringBuilder stringBuilder, string separator)
+        {
+            if (stringBuilder == null) return String.Empty;
+
+            var list = new List<string>();
+            for (int i = 0; i < stringBuilder.Length; i++)
+            {
+                list.Add(stringBuilder[i].ToString());
+            }
+
+            return String.Join(separator, list.ToArray());
+        }
     }
 }
